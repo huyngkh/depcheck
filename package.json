@@ -1,0 +1,22 @@
+{
+  "name": "dependency-analyzer",
+  "version": "1.0.0",
+  "description": "A small package to find duplicate dependencies in your node_modules. Useful when use npm as a package manager for front-end.",
+  "main": "depcheck.js",
+  "bin": "bin/cmd",
+  "author": "Huy Nguyen <huyvnn@yahoo.com>",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/huyngkh/dependency-analyzer.git"
+  },
+  "license": "ISC",
+  "dependencies": {
+    "chalk": "^1.1.0",
+    "es6-promise": "^2.3.0",
+    "lodash.find": "^4.6.0",
+    "lodash.pairs": "^3.0.1",
+    "lodash.zipobject": "^3.0.0",
+    "npm": "^6.14.6",
+    "yargs": "^17.3.1"
+  }
+}
