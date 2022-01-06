@@ -1,15 +1,25 @@
 {
-  "name": "dependency-analyzer",
+  "name": "@webkits/depcheck",
   "version": "1.0.0",
-  "description": "A small package to find duplicate dependencies in your node_modules. Useful when use npm as a package manager for front-end.",
+  "description": "A small package to find duplicate dependencies in your node_modules that helps to analyze your packages.",
   "main": "depcheck.js",
   "bin": "bin/cmd",
   "author": "Huy Nguyen <huyvnn@yahoo.com>",
+  "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/huyngkh/dependency-analyzer.git"
+    "url": "git+https://github.com/huyngkh/depcheck.git"
   },
-  "license": "ISC",
+  "keywords": [
+    "dependency-analyzer",
+    "dependency-checker",
+    "duplicate-dependencies",
+    "depcheck"
+  ],
+  "bugs": {
+    "url": "https://github.com/huyngkh/depcheck/issues"
+  },
+  "homepage": "https://github.com/huyngkh/depcheck#readme",
   "dependencies": {
     "chalk": "^1.1.0",
     "es6-promise": "^2.3.0",

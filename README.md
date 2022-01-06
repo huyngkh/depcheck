@@ -1,10 +1,10 @@
-# dependencies-analyzer
-A small package to find duplicate dependencies in your node_modules. This project is inspired by [find-duplicate-dependencies](https://github.com/vovacodes/find-duplicate-dependencies) by Vladimir Guguiev.
+# depcheck (dependency-checker)
+**depcheck** is a small package to find duplicate dependencies in your node_modules. This project is inspired by [find-duplicate-dependencies](https://github.com/vovacodes/find-duplicate-dependencies) by Vladimir Guguiev.
 
 ## Install
 
 ```bash
-$ npm install dependencies-analyzer
+$ npm install @webkits/depcheck
 ```
 
 
@@ -13,8 +13,8 @@ $ npm install dependencies-analyzer
 
 ### CLI
 
-```
-dependency-analyzer [options] [package-name-1] [...] [package-name-n]
+```bash
+depcheck [options] [package-name-1] [...] [package-name-n]
 
 Analyze and find the duplicates packages in node_modules. If no package names
 are provided, it will check all the dependencies.
@@ -33,7 +33,7 @@ This command exits with 1 if there are some duplicates and with 0 if there are n
 **Example 1**: Check all the dependencies
 
 ```bash
-$ dependency-analyzer
+$ depcheck
 ```
 
 
@@ -41,7 +41,7 @@ $ dependency-analyzer
 **Example 2**: Check some dependecies
 
 ```bash
-$ dependency-analyzer -v lodash react
+$ depcheck -v lodash react
 ```
 
 
@@ -49,7 +49,7 @@ $ dependency-analyzer -v lodash react
 ### API
 
 ```javascript
-const findDuplicateDependencies = require('dependencies-analyzer');
+const findDuplicateDependencies = require('@webkits/depcheck');
 
 findDuplicateDependencies()
   .then(duplicates => console.log(JSON.stringify(duplicates)))

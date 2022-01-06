@@ -3,10 +3,10 @@
 const util = require('util');
 const chalk = require('chalk');
 const yargs = require('yargs');
-const findDuplicateDependencies = require('../dependency-analyzer');
+const findDuplicateDependencies = require('../depcheck');
 
 const argv = yargs
-  .scriptName("dependency-analyzer")
+  .scriptName("depcheck")
   .usage('$0 [options] [package-name-1] [...] [package-name-n]', 'Analyze and find the duplicates packages in node_modules. If no package names are provided, it will check all the dependencies.')
   .option('verbose', {
     description: 'Display the duplicate packages in details with their version and caller path',
