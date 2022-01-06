@@ -1,9 +1,9 @@
 {
   "name": "@webkits/depcheck",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A small package to find duplicate dependencies in your node_modules that helps to analyze your packages.",
   "main": "depcheck.js",
-  "bin": "bin/cmd",
+  "bin": "bin/index.js",
   "author": "Huy Nguyen <huyvnn@yahoo.com>",
   "license": "MIT",
   "repository": {
