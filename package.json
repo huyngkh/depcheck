@@ -21,12 +21,12 @@
   },
   "homepage": "https://github.com/huyngkh/depcheck#readme",
   "dependencies": {
-    "chalk": "^1.1.0",
-    "es6-promise": "^2.3.0",
+    "chalk": "^4.1.2",
+    "es6-promise": "^4.2.8",
     "lodash.find": "^4.6.0",
     "lodash.pairs": "^3.0.1",
     "lodash.zipobject": "^3.0.0",
-    "npm": "^6.14.6",
+    "npm": "^8.3.0",
     "yargs": "^17.3.1"
   }
 }

@@ -41,7 +41,7 @@ $ depcheck
 **Example 2**: Check some dependecies
 
 ```bash
-$ depcheck -v lodash react
+$ depcheck -v -- lodash react
 ```
 
 

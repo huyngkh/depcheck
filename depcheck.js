@@ -1,10 +1,12 @@
 'use strict';
 
-const npm = require('npm');
+const Npm = require('./node_modules/npm/lib/npm.js');
 const pairs = require('lodash.pairs');
 const zipObject = require('lodash.zipobject');
 const find = require('lodash.find');
 const Promise = require('es6-promise').Promise;
+
+const npm = new Npm();
 
 function findDuplicateDependencies(options) {
 
@@ -13,25 +15,42 @@ function findDuplicateDependencies(options) {
   return new Promise(function(resolve, reject) {
     const packages = options.packages || [];
     const {checkDevDependencies} = options;
+    
+    npm.load().then(() => {
+      npm.config.set('json', true);
+      npm.config.set('all', true);
+      npm.config.set('production', !checkDevDependencies);
 
-    npm.load({production: !checkDevDependencies, json: true}, function(err) {
+      npm.output = (result) => {
+        let packageObj = JSON.parse(result);
 
-      if (err) return reject(err);
-
-      npm.commands.ls(packages, true, function(err, packageInfo, packageObj) {
-
-        if (err) return reject(err);
+        try {
+          packageObj = JSON.parse(result);
+        } catch {
+          reject(result);
+        }
 
         const catalog = catalogDependencies(packageObj.dependencies, packageObj.name);
         const duplicatePairs = pairs(catalog).filter(function (entry) {
           return entry[1].length > 1;
         });
 
-        resolve(zipObject(duplicatePairs));
+        let duplicates = zipObject(duplicatePairs);
+        if (packages.length) {
+          duplicates = Object.keys(duplicates)
+            .filter(pkgName => packages.includes(pkgName))
+            .reduce((obj, key) => {
+                obj[key] = duplicates[key];
+                return obj;
+            }, {});
+        }
 
-      });
+        resolve(duplicates);
+      };
 
-    })
+      npm.exec('ls', []);
+    });
+    
   });
 
 }
@@ -57,7 +76,6 @@ function catalogDependencies(dependencies, path) {
         acc[name].push({
           name: name,
           version: moduleObj.version,
-          from: moduleObj.from,
           path: path
         });
       }

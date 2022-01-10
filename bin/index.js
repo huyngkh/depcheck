@@ -17,18 +17,16 @@ const argv = yargs
   .alias('help', 'h').argv;
 
 findDuplicateDependencies({packages: argv._}).then(
-    function(duplicates) {
+  function(duplicates) {
+    if (Object.keys(duplicates).length) {
 
-      if (Object.keys(duplicates).length) {
-
-        printFailMessage(duplicates);
-        return process.exit(1);
-      }
-
-      printSuccessMessage();
+      printFailMessage(duplicates);
+      return process.exit(1);
     }
-).catch(function(err) {
 
+    printSuccessMessage();
+  }
+).catch(function(err) {
   console.error(err.stack);
   return process.exit(1);
 });
@@ -37,7 +35,7 @@ findDuplicateDependencies({packages: argv._}).then(
 function printSuccessMessage() {
   if (argv._.length) {
     console.log(chalk.green(`There are no duplicate dependencies in the following package(s)`));
-    console.log(chalk.cyan(argv._.join('')));
+    console.log(chalk.cyan(argv._.join(' ')));
   } else {
     console.log(chalk.green('There are no duplicate dependencies in your package(s). Congratulations!'));
   }
