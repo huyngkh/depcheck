@@ -1,6 +1,6 @@
 'use strict';
 
-const Npm = require('./node_modules/npm/lib/npm.js');
+const Npm = require('../../../node_modules/npm/lib/npm.js');
 const pairs = require('lodash.pairs');
 const zipObject = require('lodash.zipobject');
 const find = require('lodash.find');
